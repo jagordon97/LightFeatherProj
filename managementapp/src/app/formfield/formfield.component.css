@@ -1,0 +1,27 @@
+form-field{
+  display:  flex;
+  flex-direction: column;
+  padding-bottom: 10px;
+  width: 35%;
+  padding: 20px;
+}
+
+input, select{
+  padding: 5px;
+  width: 200px;
+}
+form{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.btn{
+  max-width: 150px;
+  padding: 10px;
+  text-transform: uppercase;
+}
+
+h1{
+  text-align: center;
+  font-weight: bold;
+}

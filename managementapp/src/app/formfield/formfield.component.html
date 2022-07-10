@@ -1,0 +1,28 @@
+<h1>LightFeather Management</h1>
+
+<form method="POST" action="/api/submit">
+  <div class="form-field">
+    <label for="fname">First Name</label>
+    <input type="text" id="fname" name="fname">
+  </div>
+  <div class="form-field">
+    <label for="lname">Last Name</label>
+    <input type="text" id="lname" name="lname">
+  </div>
+  <div class="form-field">
+    <label for="email">Email</label>
+    <input type="text" id="email" name="email">
+  </div>
+  <div class="form-field">
+    <label for="phone">Phone Number</label>
+    <input type="text" id="phone" name="phone">
+  </div>
+  <div class="form-field">
+    <label for="supervisor">Supervisor</label>
+    <select id="supervisor" name="supervisor" method="get" action="/api/supervisors">
+      <option disabled selected value style="display: none;">Select...</option>
+      <option *ngFor="let item of supervisors">{{ item.supervisor }}</option>
+    </select>
+  </div>
+  <input class="btn" type="submit" value="Submit"/>
+</form>
