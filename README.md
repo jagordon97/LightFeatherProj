@@ -1,3 +1,8 @@
+Prerequistes
+1)Install docker
+  -Installation steps for docker can be found on their main page.
+  https://docs.docker.com/engine/install/
+
 Steps to run
 1)Download project
 2)Navigate to LightFeather folder
