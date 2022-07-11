@@ -2,8 +2,15 @@ version: "3.0"
 
 services:
   express-template:
-    build: 
+    build:
       context: .
       dockerfile: Dockerfile
     ports:
       - 8080:8080
+  managementapp:
+    image: nginx
+    build:
+      context: ./managementapp
+      dockerfile: clientDockerfile
+    ports:
+      - 4200:80
