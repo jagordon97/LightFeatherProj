@@ -1,60 +1,59 @@
-<h1>LightFeather Management</h1>
-<!-- method="POST" action="http://localhost:8080/api/submit" -->
-<form [formGroup]="form" (ngSubmit)="submitForm()">
-  <div class="form-field form-group">
-    <label for="fname">First Name</label>
-    <input type="text" id="fname" name="fname" placeholder="First Name" formControlName="fname" required>
-    <div *ngIf="form.controls['fname'].invalid && form.controls['fname'].touched" class="alert alert-danger">
-     <div *ngIf="form.controls['fname'].errors?.['required']">
-       First Name is required.
+<div class="container">
+  <h1 class="h1">LightFeather Management</h1>
+  <!-- method="POST" action="http://localhost:8080/api/submit" -->
+  <form [formGroup]="form" (ngSubmit)="submitForm()">
+    <div class="form-field form-group">
+      <label for="fname">First Name</label>
+      <input type="text" id="fname" name="fname" placeholder="First Name" formControlName="fname" (change)="hideMsg()" required>
+      <div *ngIf="form.controls['fname'].invalid && form.controls['fname'].touched" class="alert alert-danger">
+       <div class="validation-message" *ngIf="form.controls['fname'].errors?.['required']">
+         First Name is required.
+       </div>
+       <div class="validation-message" *ngIf="form.controls['fname'].hasError('pattern')">
+         First Name must be composed of letters only.
+       </div>
      </div>
-     <div *ngIf="form.controls['fname'].hasError('pattern')">
-       First Name must be composed of letters only.
+    </div>
+    <div class="form-field form-group">
+      <label for="lname">Last Name</label>
+      <input type="text" id="lname" name="lname" placeholder="Last Name" formControlName="lname" (change)="hideMsg()" required>
+      <div *ngIf="form.controls['lname'].invalid && form.controls['lname'].touched" class="alert alert-danger">
+       <div class="validation-message" *ngIf="form.controls['lname'].errors?.['required']">
+         Last Name is required.
+       </div>
+       <div class="validation-message" *ngIf="form.controls['lname'].hasError('pattern')">
+         Last Name must be composed of letters only.
+       </div>
      </div>
-   </div>
-  </div>
-  <div class="form-field form-group">
-    <label for="lname">Last Name</label>
-    <input type="text" id="lname" name="lname" placeholder="Last Name" formControlName="lname" required>
-    <div *ngIf="form.controls['lname'].invalid && form.controls['lname'].touched" class="alert alert-danger">
-     <div *ngIf="form.controls['lname'].errors?.['required']">
-       Last Name is required.
+    </div>
+    <div class="form-field form-group">
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" placeholder="Email@gmail.com" formControlName="email" (change)="hideMsg()">
+      <div *ngIf="form.controls['email'].invalid && form.controls['email'].touched" class="alert alert-danger">
+       <div class="validation-message" *ngIf="form.controls['email'].hasError('pattern')">
+         Email must be in format xxx@xxxx.xxx.
+       </div>
      </div>
-     <div *ngIf="form.controls['lname'].hasError('pattern')">
-       Last Name must be composed of letters only.
+    </div>
+    <div class="form-field form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" id="phone" name="phone" formControlName="phone" placeholder="515-979-4498" (change)="hideMsg()">
+      <div *ngIf="form.controls['phone'].invalid && form.controls['phone'].touched" class="alert alert-danger">
+       <div *ngIf="form.controls['phone'].hasError('pattern')">
+         Phone number not valid.
+       </div>
      </div>
-   </div>
-  </div>
-  <div class="form-field form-group">
-    <label for="email">Email</label>
-    <input type="email" id="email" name="email" placeholder="Email@gmail.com" formControlName="email">
-    <div *ngIf="form.controls['email'].invalid && form.controls['email'].touched" class="alert alert-danger">
-     <div *ngIf="form.controls['email'].errors?.['required']">
-       Email is required.
-     </div>
-     <div *ngIf="form.controls['email'].hasError('pattern')">
-       Email must be in format xxx@xxxx.xxx.
-     </div>
-   </div>
-  </div>
-  <div class="form-field form-group">
-    <label for="phone">Phone Number</label>
-    <input type="tel" id="phone" name="phone" formControlName="phone" placeholder="515-979-4498">
-    <div *ngIf="form.controls['phone'].invalid && form.controls['phone'].touched" class="alert alert-danger">
-     <div *ngIf="form.controls['phone'].errors?.['required']">
-       Phone is required.
-     </div>
-     <div *ngIf="form.controls['phone'].hasError('pattern')">
-       Phone must be in XXX-XXX-XXXX format.
-     </div>
-   </div>
-  </div>
-  <div class="form-field form-group">
-    <label for="supervisor">Supervisor</label>
-    <select id="supervisor" name="supervisor" formControlName="supervisor" required>
-      <option disabled selected value style="display: none;">Select...</option>
-      <option *ngFor="let item of supervisors" value="{{ item.supervisor }}">{{ item.supervisor }}</option>
-    </select>
-  </div>
-  <input class="btn" type="submit" value="Submit" [disabled]="!form.valid"/>
-</form>
+    </div>
+    <div class="form-field form-group">
+      <label for="supervisor">Supervisor</label>
+      <select id="supervisor" name="supervisor" formControlName="supervisor" (change)="hideMsg()" required>
+        <option disabled selected value style="display: none;">Select...</option>
+        <option *ngFor="let item of supervisors" value="{{ item.supervisor }}">{{ item.supervisor }}</option>
+      </select>
+    </div>
+    <input class="btn" type="submit" value="Submit" [disabled]="!form.valid"/>
+    <div class="success" *ngIf="showMsg">
+      Successfully Submitted!
+    </div>
+  </form>
+</div>

@@ -2,16 +2,49 @@
   display:  flex;
   flex-direction: column;
   padding: 20px;
+  max-width: 200px;
+}
+
+.h1{
+  color: #004B7E;
+}
+
+.success{
+  color: green;
+  padding: 10px;
+}
+
+.container{
+  background-color: #C4DBE4;
+  padding: 50px;
+  margin: 30px 50px;
+  border-radius: 10px;
 }
 
 input, select{
   padding: 5px;
   width: 200px;
+  background-color: #C4DBE4;
+  border: 2px solid white;
+
 }
-input:hover{
-  border: 2px solid #C6D2D7;
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+  -webkit-box-shadow: 0 0 0 30px #C4DBE4 inset !important;
+}
+
+input:hover, select:hover{
+  border: 2px solid #0080BE;
   border-radius: 2px;
 }
+
+.validation-message{
+  color: #c90000;
+}
+
 form{
   display: flex;
   flex-direction: column;

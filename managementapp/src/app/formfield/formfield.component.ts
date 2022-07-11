@@ -10,6 +10,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class FormfieldComponent implements OnInit {
   supervisors;
   form: FormGroup;
+  showMsg: boolean = false;
 
   constructor(public fb: FormBuilder, private http: HttpClient) {
     this.form = this.fb.group({
@@ -24,16 +25,16 @@ export class FormfieldComponent implements OnInit {
         ]
       ],
       email: ['',[
-          Validators.required,
           Validators.pattern("^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$")
         ]
       ],
       phone: ['',[
-          Validators.required,
-          Validators.pattern("^[0-9]{3}-[0-9]{3}-[0-9]{4}$")
+          Validators.pattern("^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$")
         ]
       ],
-      supervisor: [''],
+      supervisor: ['', [
+          Validators.required
+        ]],
     });
   }
 
@@ -66,6 +67,11 @@ export class FormfieldComponent implements OnInit {
         error: (error) => console.log(error),
       });
 
+      this.showMsg= true;
+  }
+
+  hideMsg(){
+    this.showMsg= false;
 
   }
 
