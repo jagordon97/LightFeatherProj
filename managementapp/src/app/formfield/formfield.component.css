@@ -1,14 +1,16 @@
-form-field{
+.form-field{
   display:  flex;
   flex-direction: column;
-  padding-bottom: 10px;
-  width: 35%;
   padding: 20px;
 }
 
 input, select{
   padding: 5px;
   width: 200px;
+}
+input:hover{
+  border: 2px solid #C6D2D7;
+  border-radius: 2px;
 }
 form{
   display: flex;
