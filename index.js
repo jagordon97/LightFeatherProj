@@ -41,7 +41,7 @@ app.get('/api/supervisors', async (req, res) => {
             // supervisorsArray = body;
 
             for (const i of body){
-              let supervisor = { "supervisor" :  i.jurisdiction + " - " + i.firstName + ", " + i.lastName };
+              let supervisor = { "supervisor" :  i.jurisdiction + " - " + i.lastName + ", " + i.firstName };
               supervisorsArray.push(supervisor);
             }
 
