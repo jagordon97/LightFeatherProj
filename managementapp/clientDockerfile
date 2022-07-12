@@ -1,3 +1,10 @@
+From node:alpine as builder
+WORKDIR /app
+COPY . .
+RUN npm install
+RUN npm install -g @angular/cli
+RUN npm run ng build --prod
+
 FROM nginx:alpine
-COPY ./dist/managementapp/ /usr/share/nginx/html/
+COPY --from=builder /app/dist/managementapp/ /usr/share/nginx/html/
 ENTRYPOINT ["nginx", "-g", "daemon off;"]
